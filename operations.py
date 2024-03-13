@@ -13,7 +13,7 @@ def clear_window(janela):
 class AbortTransaction(Exception):
     '''raise this exception to abort a bank transaction'''
     pass
-class account():
+class account(Observer):
     def __init__(self,code,password):
         self.code = code
         self.password = password
@@ -38,7 +38,8 @@ class account():
 
     def delete(self,subject):
         self._subjectlist.remove(subject)
-
+    def update(self, subject: Subject) -> None:
+        return subject.info_investiment()
     def validatevalue(self, value):
         try:
             value = int(value)
@@ -138,9 +139,6 @@ class account():
             raise AbortTransaction("The Loan was reffused, you will be redirected to the central") 
         
     def investiment(self,investiment_choice,investiment_check):
-
-        if not check_instance(self._subjectlist,investiment_market):
-            print("4 - Stop receive news of investiment")
 
         investiment_choice = self.validatevalue(investiment_choice)
 

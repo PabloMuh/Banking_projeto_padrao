@@ -70,12 +70,12 @@ def show_login_menu():
     login_label.grid(row=0, column=0)
 
     # Campos de entrada para email e senha
-    email_label = Label(janela, text="Código:")
+    email_label = Label(janela, text="Code:")
     email_label.grid(row=1, column=0)
     email_entry = Entry(janela)
     email_entry.grid(row=1, column=1)
 
-    senha_label = Label(janela, text="Senha:")
+    senha_label = Label(janela, text="Password:")
     senha_label.grid(row=2, column=0)
     senha_entry = Entry(janela, show="*")  # Para ocultar a senha
     senha_entry.grid(row=2, column=1)
@@ -193,7 +193,7 @@ def checkPassword(self, choice, value,destine):
     label = Label(janela, text="Enter your password to confirm the transaction:")
     label.grid(column=0,row=0)
 
-    password = Entry(janela)
+    password = Entry(janela, show="*")
     password.grid(column=0,row=1)
 
     button = Button(janela,text="Enter",command= lambda:checkpasswordpass(self, password.get(), choice, value,destine))
@@ -332,14 +332,15 @@ def update(self, subject: Subject) -> None:
         texto = Label(janela,text="This is the news of the market")
         texto.grid(column=0,row=0)
         
-        info = Label(janela,text=subject.info_investiment())
+        info = Label(janela,text=self.update(subject))
         info.grid(column=0,row=1)
 
         button = Button(janela,text="Enter",command=lambda:investiment(self))
         button.grid(column=0,row=2)
 def detach_message(self,subject):
     clear_window()
-    subject.detach(self,"Investiment")
+
+    self.investiment(4,"y")
 
     texto = Label(janela,text="You will not receive news of investiment anymore")
     texto.grid(column=0,row=0)

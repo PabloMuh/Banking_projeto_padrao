@@ -7,6 +7,7 @@ class investiment_market(Subject):
     def attach(self, observer,nameSubject):
         self._observersList.append(observer)
         observer.show = True
+        observer.check = True
         
     def detach(self, observer,nameSubject):
         self._observersList.remove(observer)

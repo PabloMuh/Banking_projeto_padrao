@@ -10,4 +10,7 @@ class Subject(ABC):
     @abstractmethod
     def notify(self):
         pass
+class Observer(ABC):
+    def update(self, subject: Subject) -> None:
+        pass
             
